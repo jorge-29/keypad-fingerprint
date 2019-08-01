@@ -68,14 +68,16 @@ uint16_t readnumber(void) {
 }
 uint16_t keypa(void)
 {
- // uint16_t keypressed = 0;
+
+ //uint16_t keypressed = 0;
  char keypressed = myKeypad.getKey();
- while(keypressed==0){
+  Serial.print(keypressed);
+// while(keypressed==0){
   //while (! Serial.available());
-//while (keypressed != NO_KEY)
+while (keypressed != NO_KEY)
 keypressed=Serial.parseInt();
 } 
-}
+//}
 void loop()                     // run over and over again
 {
   Serial.println("Listo para registrar una huella digital!");
@@ -85,8 +87,7 @@ void loop()                     // run over and over again
      return;
   }
   Serial.print("Enrolling ID #");
-  Serial.println(id);
-  
+  Serial.println(id); 
   while (!  getFingerprintEnroll() );
 }
 
